@@ -24,3 +24,46 @@ public class Main {
         controller.addProdukt(new Produkt("X-Gene Serum", 850.0, "X-Mansion"));
         controller.addProdukt(new Produkt("Cosmic Cube", 9000.0, "Multiverse"));
         controller.addProdukt(new Produkt("Darkhold", 2000.0, "Multiverse"));
+
+        // Initialisierung der Charaktere
+        List<Charakter> charaktere = new ArrayList<>();
+
+        Charakter c1 = new Charakter(1, "Thor", "Asgard");
+        c1.kaufeProdukt(controller.getProducts().get(0)); // Mjolnir
+        c1.kaufeProdukt(controller.getProducts().get(5)); // Norn Stones
+        c1.kaufeProdukt(controller.getProducts().get(9)); // Darkhold
+
+        Charakter c2 = new Charakter(2, "Black Panther", "Wakanda");
+        c2.kaufeProdukt(controller.getProducts().get(1)); // Vibranium-Schild
+        c2.kaufeProdukt(controller.getProducts().get(7)); // X-Gene Serum
+
+        Charakter c3 = new Charakter(3, "Iron Man", "Terra");
+        c3.kaufeProdukt(controller.getProducts().get(4)); // Arc-Reaktor
+        c3.kaufeProdukt(controller.getProducts().get(6)); // Quantum Suit
+        c3.kaufeProdukt(controller.getProducts().get(3)); // Web-Shooter
+
+        Charakter c4 = new Charakter(4, "Spider-Man", "Terra");
+        c4.kaufeProdukt(controller.getProducts().get(3)); // Web-Shooter
+        c4.kaufeProdukt(controller.getProducts().get(8)); // Cosmic Cube
+
+        Charakter c5 = new Charakter(5, "Doctor Strange", "Multiverse");
+        c5.kaufeProdukt(controller.getProducts().get(9)); // Darkhold
+        c5.kaufeProdukt(controller.getProducts().get(8)); // Cosmic Cube
+        c5.kaufeProdukt(controller.getProducts().get(2)); // Infinity Gauntlet
+
+
+        controller.addCharakter(c1);
+        controller.addCharakter(c2);
+        controller.addCharakter(c3);
+        controller.addCharakter(c4);
+        controller.addCharakter(c5);
+
+
+        controller.buyProdukt(1, "Mjolnir");
+//        controller.filterCharactersByRegion();
+
+
+
+
+    }
+}
