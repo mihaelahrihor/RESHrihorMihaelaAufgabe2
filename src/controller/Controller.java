@@ -41,7 +41,6 @@ public class Controller {
                 .collect(Collectors.toList());
         view.displayCharacters(filtered);
     }
-
     public void showCharactersByPurchasedUniverse(String universe) {
         List<Charakter> filtered = characters.stream()
                 .filter(c -> c.getPurchasedProducts().stream().anyMatch(p -> p.getUniverse().equalsIgnoreCase(universe)))
