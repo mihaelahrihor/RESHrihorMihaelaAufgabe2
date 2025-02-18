@@ -48,3 +48,25 @@ public class Controller {
                 .collect(Collectors.toList());
         view.displayCharacters(filtered);
     }
+
+    public void sortProductsByCharacter(String characterName, boolean ascending) {
+        Charakter character = characters.stream()
+                .filter(c -> c.getName().equalsIgnoreCase(characterName))
+                .findFirst()
+                .orElse(null);
+        if (character != null) {
+            List<Produkt> sortedProducts = character.getPurchasedProducts().stream()
+                    .sorted(ascending ? Comparator.comparingDouble(Produkt::getPrice) : Comparator.comparingDouble(Produkt::getPrice).reversed())
+                    .collect(Collectors.toList());
+            view.displayProducts(sortedProducts);
+        }
+    }
+
+
+    public List<Produkt> getProducts() {
+        return products;
+    }
+
+
+
+}
