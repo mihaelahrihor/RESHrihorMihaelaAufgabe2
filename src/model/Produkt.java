@@ -2,36 +2,24 @@ package model;
 
 public class Produkt {
     private String name;
-    private double price;
-    private String universe;
+    private double preis;
+    private String universum;
 
-    public Produkt(String name, double price, String universe) {
+    public Produkt(String name, double preis, String universum) {
         this.name = name;
-        this.price = price;
-        this.universe = universe;
+        this.preis = preis;
+        this.universum = universum;
+    }
+
+    public double getPreis() {
+        return preis;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getUniverse() {
-        return universe;
-    }
-
-    public void setUniverse(String universe) {
-        this.universe = universe;
+    public String getUniversum() {
+        return universum;
     }
 }

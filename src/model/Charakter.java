@@ -7,47 +7,28 @@ public class Charakter {
     private int id;
     private String name;
     private String region;
-    private List<Produkt> purchasedProducts = new ArrayList<>();
+    private List<Produkt> gekaufteProdukte;
 
     public Charakter(int id, String name, String region) {
         this.id = id;
         this.name = name;
         this.region = region;
+        this.gekaufteProdukte = new ArrayList<>();
     }
 
-    public void kaufeProdukt(Produkt product) {
-        purchasedProducts.add(product);
+    public void kaufeProdukt(Produkt produkt) {
+        gekaufteProdukte.add(produkt);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public List<Produkt> getGekaufteProdukte() {
+        return gekaufteProdukte;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getRegion() {
         return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public List<Produkt> getPurchasedProducts() {
-        return purchasedProducts;
-    }
-
-    public void setPurchasedProducts(List<Produkt> purchasedProducts) {
-        this.purchasedProducts = purchasedProducts;
     }
 }
