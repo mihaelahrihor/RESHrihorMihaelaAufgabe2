@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -64,6 +68,9 @@ public static void aufgabe2() {
         System.out.println("1 - Alle Charaktere anzeigen");
         System.out.println("2 - Produkte eines Charakters anzeigen");
         System.out.println("3 - Produkte eines Charakters sortieren");
+        System.out.println("4 - CRUD - Produkte eines Charakters sortieren");
+        System.out.println("5 -  CRUD - Charaktere eines Charakters sortieren");
+
         System.out.println("0 - Beenden");
         System.out.print("Auswahl: ");
 
@@ -87,6 +94,12 @@ public static void aufgabe2() {
                 boolean aufsteigend = (sortierung == 1);
                 controller.sortiereProdukteEinesCharakters(charName, aufsteigend);
                 break;
+            case 4:
+                verwalteProdukte(controller, scanner);
+                break;
+            case 5:
+                verwalteCharaktere(controller, scanner);
+                break;
             case 0:
                 System.out.println("Programm beendet.");
                 return;
@@ -98,5 +111,140 @@ public static void aufgabe2() {
 
 }
 
+
+private static void verwalteProdukte(MarvelController controller, Scanner scanner) {
+    while (true) {
+
+        controller.zeigeAlleProdukte();
+
+        System.out.println("\nProdukte verwalten:");
+        System.out.println("1 - Neues Produkt hinzufügen");
+        System.out.println("2 - Produkt aktualisieren");
+        System.out.println("3 - Produkt entfernen");
+        System.out.println("4 - Produkt suchen");
+        System.out.println("0 - Zurück");
+        System.out.print("Auswahl: ");
+
+        int wahl = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (wahl) {
+            case 1:
+                System.out.print("Produktname: ");
+                String produktName = scanner.nextLine();
+                System.out.print("Preis: ");
+                double preis = scanner.nextDouble();
+                scanner.nextLine();
+                System.out.print("Universum: ");
+                String universum = scanner.nextLine();
+                controller.addProdukt(produktName, preis, universum);
+                break;
+
+            case 2:
+                System.out.print("Aktueller Produktname: ");
+                String alterName = scanner.nextLine();
+                System.out.print("Neuer Produktname: ");
+                String neuerName = scanner.nextLine();
+                System.out.print("Neuer Preis: ");
+                double neuerPreis = scanner.nextDouble();
+                scanner.nextLine();
+                System.out.print("Neues Universum: ");
+                String neuesUniversum = scanner.nextLine();
+                controller.updateProdukt(alterName, neuerName, neuerPreis, neuesUniversum);
+                break;
+
+            case 3:
+                System.out.print("Produktname zum Entfernen: ");
+                String nameEntfernen = scanner.nextLine();
+                controller.removeProdukt(nameEntfernen);
+                break;
+
+            case 4:
+                System.out.print("Produktname zum Suchen: ");
+                String nameSuchen = scanner.nextLine();
+                Produkt gefundenesProdukt = controller.getProduktByName(nameSuchen);
+                if (gefundenesProdukt != null) {
+                    System.out.println("Gefunden: " + gefundenesProdukt.getName() + " (" + gefundenesProdukt.getPreis() + " Credits, Universum: " + gefundenesProdukt.getUniversum() + ")");
+                } else {
+                    System.out.println("Produkt nicht gefunden!");
+                }
+                break;
+
+            case 0:
+                return;
+
+            default:
+                System.out.println("Ungültige Eingabe!");
+        }
+    }
+}
+
+private static void verwalteCharaktere(MarvelController controller, Scanner scanner) {
+    while (true) {
+
+
+        controller.zeigeAlleCharaktere();
+
+        System.out.println("\nCharaktere verwalten:");
+        System.out.println("1 - Neuen Charakter hinzufügen");
+        System.out.println("2 - Charakter aktualisieren");
+        System.out.println("3 - Charakter entfernen");
+        System.out.println("4 - Charakter suchen");
+        System.out.println("0 - Zurück");
+        System.out.print("Auswahl: ");
+
+        int wahl = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (wahl) {
+            case 1:
+                System.out.print("Charakter ID: ");
+                int charId = scanner.nextInt();
+                scanner.nextLine();
+                System.out.print("Charaktername: ");
+                String charName = scanner.nextLine();
+                System.out.print("Region: ");
+                String charRegion = scanner.nextLine();
+                controller.addCharakter(charId, charName, charRegion);
+                break;
+
+            case 2:
+                System.out.print("Charakter ID zum Aktualisieren: ");
+                int idAktualisieren = scanner.nextInt();
+                scanner.nextLine();
+                System.out.print("Neuer Name: ");
+                String neuerCharName = scanner.nextLine();
+                System.out.print("Neue Region: ");
+                String neueRegion = scanner.nextLine();
+                controller.updateCharakter(idAktualisieren, neuerCharName, neueRegion);
+                break;
+
+            case 3:
+                System.out.print("Charakter ID zum Entfernen: ");
+                int idEntfernen = scanner.nextInt();
+                scanner.nextLine();
+                controller.removeCharakter(idEntfernen);
+                break;
+
+            case 4:
+                System.out.print("Charakter ID zum Suchen: ");
+                int idSuchen = scanner.nextInt();
+                scanner.nextLine();
+                Charakter gefundenerChar = controller.getCharakterById(idSuchen);
+                if (gefundenerChar != null) {
+                    System.out.println("Gefunden: " + gefundenerChar.getName() + " aus " + gefundenerChar.getRegion());
+                } else {
+                    System.out.println("Charakter nicht gefunden!");
+                }
+                break;
+
+            case 0:
+                return;
+
+            default:
+                System.out.println("Ungültige Eingabe!");
+        }
+    }
+}
 
 }

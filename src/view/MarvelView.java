@@ -13,6 +13,14 @@ public class MarvelView {
         }
     }
 
+
+    public void zeigeProdukte(List<Produkt> produkte) {
+        System.out.println("Liste der Produkte:");
+        for (Produkt p : produkte) {
+            System.out.println("- " + p.getName() + " aus " + p.getPreis() + p.getUniversum());
+        }
+    }
+
     public void zeigeProdukteEinesCharakters(Charakter c) {
         System.out.println("Produkte von " + c.getName() + ":");
         for (Produkt p : c.getGekaufteProdukte()) {
@@ -26,4 +34,5 @@ public class MarvelView {
             System.out.println("- " + p.getName() + " (" + p.getPreis() + " Credits)");
         }
     }
+
 }

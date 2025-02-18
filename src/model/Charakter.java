@@ -16,6 +16,26 @@ public class Charakter {
         this.gekaufteProdukte = new ArrayList<>();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setGekaufteProdukte(List<Produkt> gekaufteProdukte) {
+        this.gekaufteProdukte = gekaufteProdukte;
+    }
+
     public void kaufeProdukt(Produkt produkt) {
         gekaufteProdukte.add(produkt);
     }

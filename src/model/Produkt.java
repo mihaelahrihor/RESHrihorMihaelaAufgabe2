@@ -22,4 +22,16 @@ public class Produkt {
     public String getUniversum() {
         return universum;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPreis(double preis) {
+        this.preis = preis;
+    }
+
+    public void setUniversum(String universum) {
+        this.universum = universum;
+    }
 }
